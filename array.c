@@ -1,42 +1,25 @@
-#include <stdio.h>
-/*
-int main()
-{
-   int a[10];
-   int i;
-   printf("Enter the array element: "); //display 10 elements from the user
-   
-   for(i = 0; i<=9; i++)
-   {
-    scanf("%d", &a[i]);
-   }
-   printf("%d\n", a[9]);
-   return(0);
-}
-*/
-
+#include<stdio.h>
 void main()
 {
-    int a[5];
-    int b[5];
-    int c[5];
-
-    int i;
-    for(i=0; i<=4; i++)
+    int a[3],b[3],c[3],i;
+    printf("Enter Three numbers ");
+    for(i=0;i<=2;i++)
     {
-        scanf("%d", &a[i]);
+        scanf("%d",&a[i]);
     }
-
-    for(i=0; i<=4; i++)
+    printf("Enter Another Three numbers ");
+    for(i=0;i<=2;i++)
+    {   
+        scanf("%d",&b[i]);
+    }
+    for(i=0;i<=2;i++)
     {
-        scanf("%d", &b[i]);
+        c[i]=a[i]+b[i];
     }
-
-    for(i=0; i<=4; i++)
+    printf("The Resultant Array is ");
+    for(i=0;i<=2;i++)
     {
-        scanf("%d", &c[5]);
-    }
+        printf("\n c[%d]=%d",i,c[i]);
 
-    c[5] = a[5] + b[5];
-    printf("%d\n", c[5]);
+    }
 }

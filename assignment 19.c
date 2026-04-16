@@ -1,86 +1,39 @@
-#include <stdio.h>
-#include <string.h>
-
-struct Employee {
-    char name[50];
-    char designation[50];
-    char gender[10];
-    char doj[15];   // date of joining
-    float salary;
+#include<stdio.h>
+struct EMPLOYEE
+{
+    char name[20];
+    char designation[20];
+    char gender;
+    int date_of_joining;
+    int salary;
 };
-
-// a) Total number of employees
-int totalEmployees(int n) {
-    return n;
-}
-
-// b) Count male and female employees
-void countGender(struct Employee emp[], int n) {
-    int male = 0, female = 0;
-
-    for(int i = 0; i < n; i++) {
-        if(strcmp(emp[i].gender, "Male") == 0 || strcmp(emp[i].gender, "male") == 0)
+int main()
+{
+    struct EMPLOYEE emp[50];
+    int i, male=0, female=0;
+    for(i=0; i<3; i++)
+    {
+        printf("Enter name, designation, gender, date of joining and salary of employee %d: ", i + 1);
+        scanf("%s %s %c %d %d", emp[i].name, emp[i].designation, &emp[i].gender, &emp[i].date_of_joining, &emp[i].salary);
+        if(emp[i].gender == 'M' || emp[i].gender == 'm')
             male++;
-        else if(strcmp(emp[i].gender, "Female") == 0 || strcmp(emp[i].gender, "female") == 0)
+        else
             female++;
     }
-
-    printf("Male Employees: %d\n", male);
-    printf("Female Employees: %d\n", female);
-}
-
-// c) Employees with salary > 10000
-void salaryAbove10k(struct Employee emp[], int n) {
-    printf("\nEmployees with salary > 10000:\n");
-    for(int i = 0; i < n; i++) {
-        if(emp[i].salary > 10000) {
-            printf("%s - %.2f\n", emp[i].name, emp[i].salary);
-        }
+    printf("Number of male employees: %d\n", male);
+    printf("Number of female employees: %d\n", female);
+    printf("Salary>10000:\n");
+    for(i=0; i<3; i++)
+    {
+        if(emp[i].salary > 10000)
+        {printf("%s\n", emp[i].name);}
     }
-}
-
-// d) Employees with designation "asst manager"
-void asstManager(struct Employee emp[], int n) {
-    printf("\nEmployees with designation 'Asst Manager':\n");
-    for(int i = 0; i < n; i++) {
-        if(strcmp(emp[i].designation, "Asst Manager") == 0 || 
-           strcmp(emp[i].designation, "asst manager") == 0) {
-            printf("%s\n", emp[i].name);
-        }
+    printf("Assistant Manager:\n");
+    for(i=0; i<3; i++)
+    {
+        if(strcmp(emp[i].designation, "Assistant Manager") == 0)
+        {printf("%s\n", emp[i].name);}
     }
-}
-
-int main() {
-    int n;
-    printf("Enter number of employees: ");
-    scanf("%d", &n);
-
-    struct Employee emp[n];
-
-    for(int i = 0; i < n; i++) {
-        printf("\nEnter details for employee %d:\n", i + 1);
-        
-        printf("Name: ");
-        scanf("%s", emp[i].name);
-
-        printf("Designation: ");
-        scanf("%s", emp[i].designation);
-
-        printf("Gender: ");
-        scanf("%s", emp[i].gender);
-
-        printf("Date of Joining: ");
-        scanf("%s", emp[i].doj);
-
-        printf("Salary: ");
-        scanf("%f", &emp[i].salary);
-    }
-
-    printf("\nTotal Employees: %d\n", totalEmployees(n));
-
-    countGender(emp, n);
-    salaryAbove10k(emp, n);
-    asstManager(emp, n);
-
     return 0;
+
 }
